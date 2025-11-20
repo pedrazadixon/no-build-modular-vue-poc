@@ -4,15 +4,44 @@
 
 <body>
   <div id="q-app">
-    <div>Counter: {{ counter }}</div>
-    <div>
-      <q-btn @click="decrement" label="Decrement"></q-btn>
-      <q-btn @click="increment" label="Increment"></q-btn>
-    </div>
 
-    <div class="column">
-      <iframe width="300" height="100" src="modules/counter/index_iframe1.php" frameborder="0"></iframe>
-    </div>
+    <q-layout view="hHh lpR fFf">
+
+      <q-header reveal elevated class="bg-primary text-white">
+        <q-toolbar>
+          <q-btn dense flat round icon="menu" @click="toggleLeftDrawer"> </q-btn>
+
+          <q-toolbar-title>
+            <q-avatar>
+              <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
+            </q-avatar>
+            Title
+          </q-toolbar-title>
+
+          <q-btn dense flat round icon="menu" @click="toggleRightDrawer"> </q-btn>
+        </q-toolbar>
+      </q-header>
+
+      <q-drawer v-model="leftDrawerOpen" side="left" bordered>
+        <div v-for="n in 60" :key="n">
+          Item {{ n }}
+        </div>
+      </q-drawer>
+
+      <q-drawer v-model="rightDrawerOpen" side="right" bordered>
+        <div v-for="n in 60" :key="n">
+          Item {{ n }}
+        </div>
+      </q-drawer>
+
+      <q-page-container>
+
+        <iframe src="<?php echo BASE_URL ?>layout/tabs.php" frameborder="0" style="width: 100%;"></iframe>
+
+      </q-page-container>
+
+    </q-layout>
+
   </div>
 
   <?php include 'layout/scripts.php'; ?>
@@ -25,21 +54,21 @@
 
     const app = createApp({
       setup() {
-        const counter = ref(window.globalStore.count);
-
-        mobx.reaction(
-          () => window.globalStore.count,
-          (newValue) => {
-            counter.value = newValue;
-          }
-        );
+        const leftDrawerOpen = ref(true)
+        const rightDrawerOpen = ref(false)
 
         return {
-          counter,
-          increment: window.globalStore.increment,
-          decrement: window.globalStore.decrement,
-        };
-      },
+          leftDrawerOpen,
+          toggleLeftDrawer() {
+            leftDrawerOpen.value = !leftDrawerOpen.value
+          },
+
+          rightDrawerOpen,
+          toggleRightDrawer() {
+            rightDrawerOpen.value = !rightDrawerOpen.value
+          }
+        }
+      }
     });
 
     app.use(Quasar);
