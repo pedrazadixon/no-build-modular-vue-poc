@@ -15,6 +15,20 @@ define('BASE_URL', 'http://localhost/no-build-modular-vue-poc/');
         body {
             height: 100%;
         }
+
+        .tab-content {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            transform: translateX(-100%);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .tab-content.active {
+            transform: translateX(0);
+            opacity: 1;
+            pointer-events: auto;
+            position: relative !important;
+        }
     </style>
 
 </head>

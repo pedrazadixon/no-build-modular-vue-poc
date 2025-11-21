@@ -23,12 +23,13 @@
                     </q-tab>
                 </q-tabs>
 
-                <div style="margin: 0;">
+                <div style="margin: 0; position: relative; overflow: hidden;">
                     <div
                         v-for="tabItem in tabs"
                         :key="tabItem.name"
-                        v-show="tab === tabItem.name"
-                        style="padding: 0;">
+                        class="tab-content"
+                        :class="{ 'active': tab === tabItem.name }"
+                        style="padding: 0; width: 100%; position: absolute; top: 0; left: 0;">
                         <iframe
                             :src="tabItem.url"
                             frameborder="0"
@@ -55,6 +56,7 @@
             setup() {
                 const tabs = ref(window.globalStore.tabsStore.tabs);
                 const tab = ref(window.globalStore.tabsStore.tab);
+                const prevTab = ref(tab.value);
                 const iframeHeight = ref(`${window.globalStore.appStore.qPageMinHeight - 60}px`);
 
                 window.parent.mobx.reaction(
@@ -64,6 +66,7 @@
                     }),
                     (newValues) => {
                         tabs.value = newValues.tabs;
+                        prevTab.value = tab.value;
                         tab.value = newValues.tab;
                     }
                 );

@@ -123,7 +123,6 @@
           }
         }
 
-
         const mainMenu = [{
             icon: 'home',
             text: 'Home',
@@ -138,6 +137,11 @@
             icon: 'calculate',
             text: 'Form',
             url: '<?php echo BASE_URL ?>modules/form/index.php',
+          },
+          {
+            icon: 'note_add',
+            text: 'Blank',
+            url: '<?php echo BASE_URL ?>modules/_blank/index.php',
           },
           {
             icon: 'whatshot',
