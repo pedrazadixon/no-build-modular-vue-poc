@@ -9,7 +9,7 @@
 
       <q-header reveal elevated class="bg-primary text-white">
         <q-toolbar>
-          <q-btn dense flat round icon="menu" @click="toggleLeftDrawer"> </q-btn>
+          <q-btn dense flat round icon="menu" @click="toggleLeftDrawer"></q-btn>
 
           <q-toolbar-title>
             <q-avatar>
@@ -18,7 +18,7 @@
             Title
           </q-toolbar-title>
 
-          <q-btn dense flat round icon="menu" @click="toggleRightDrawer"> </q-btn>
+          <q-btn dense flat round icon="menu" @click="toggleRightDrawer"></q-btn>
         </q-toolbar>
       </q-header>
 
