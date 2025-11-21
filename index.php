@@ -68,7 +68,7 @@
       </q-drawer>
 
       <q-page-container>
-        <q-page :style-fn="myStyleFunction">
+        <q-page :style-fn="qPageStyleFunction">
           <iframe src="<?php echo BASE_URL ?>layout/tabs.php" frameborder="0" style="width: 100%;" :style="{ minHeight: iframeHeight, height: iframeHeight }"></iframe>
         </q-page>
       </q-page-container>
@@ -93,7 +93,6 @@
         const rightDrawerOpen = ref(window.globalStore.appStore.rightDrawerOpen);
         const iframeHeight = ref(`${window.globalStore.appStore.qPageMinHeight - 6}px`);
 
-
         mobx.reaction(
           () => ({
             left: window.globalStore.appStore.leftDrawerOpen,
@@ -117,7 +116,7 @@
           window.globalStore.tabsStore.addTab(tabInfo);
         };
 
-        const myStyleFunction = (offset, height) => {
+        const qPageStyleFunction = (offset, height) => {
           window.globalStore.appStore.qPageMinHeight = (height - offset);
           return {
             minHeight: (height - offset) + 'px'
@@ -200,7 +199,7 @@
           toggleDarkMode: window.globalStore.appStore.toggleDarkMode,
           mainMenu,
           addTab,
-          myStyleFunction,
+          qPageStyleFunction,
           iframeHeight,
         }
       }
