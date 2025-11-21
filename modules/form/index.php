@@ -12,24 +12,19 @@
                 @submit="onSubmit"
                 @reset="onReset"
                 class="q-gutter-md">
+
                 <q-input
                     filled
                     v-model="name"
                     label="Your name *"
-                    hint="Name and surname"
-                    lazy-rules
-                    :rules="[ val => val && val.length > 0 || 'Please type something']"></q-input>
+                    hint="Name and surname">
+                </q-input>
 
                 <q-input
                     filled
                     type="number"
                     v-model="age"
-                    label="Your age *"
-                    lazy-rules
-                    :rules="[
-                        val => val !== null && val !== '' || 'Please type your age',
-                        val => val > 0 && val < 100 || 'Please type a real age'
-                        ]">
+                    label="Your age *">
                 </q-input>
 
                 <q-toggle v-model="accept" label="I accept the license and terms"></q-toggle>
