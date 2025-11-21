@@ -19,7 +19,9 @@
                         :key="tabItem.name"
                         :name="tabItem.name"
                         :icon="tabItem.icon"
-                        :label="tabItem.label">
+                        :label="tabItem.label"
+                        class="tab-with-close">
+                        <q-btn flat icon="close" size="xs" class="close-tab-btn" style="padding: 0px 4px; position: absolute; top: 0px; right: -16px;" @click.stop="closeTab(tabItem.name)"></q-btn>
                     </q-tab>
                 </q-tabs>
 
@@ -84,7 +86,9 @@
                     tabs,
                     tab,
                     addTab: window.globalStore.tabsStore.addTab,
+                    closeTab: window.globalStore.tabsStore.closeTab,
                     iframeHeight,
+
                 };
             },
         });

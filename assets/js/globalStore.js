@@ -82,6 +82,15 @@ class TabsStore {
     this.tabs.push(newTab);
     this.tab = newTab.name; // Switch to the newly added tab
   };
+
+  closeTab = (tabName) => {
+    this.tabs = this.tabs.filter((tab) => tab.name !== tabName);
+
+    // if is current tab, move to first tab
+    if (this.tab === tabName) {
+      this.tab = this.tabs.length > 0 ? this.tabs[0].name : null;
+    }
+  };
 }
 
 if (!window.globalStore) {

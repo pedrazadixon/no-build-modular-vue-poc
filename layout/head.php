@@ -29,6 +29,15 @@ define('BASE_URL', 'http://localhost/no-build-modular-vue-poc/');
             pointer-events: auto;
             position: relative !important;
         }
+
+        .tab-with-close .close-tab-btn {
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .tab-with-close:hover .close-tab-btn {
+            opacity: 1;
+        }
     </style>
 
 </head>
