@@ -24,7 +24,7 @@
                 initializeApp();
 
                 const confirm = () => {
-                    window.parentQuasar.Dialog.create({
+                    parentQuasar.Dialog.create({
                         title: 'Confirm',
                         message: 'Would you like to turn on the wifi?',
                         cancel: true,

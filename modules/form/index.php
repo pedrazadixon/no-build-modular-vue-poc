@@ -194,14 +194,14 @@
 
                     onSubmit() {
                         if (accept.value !== true) {
-                            window.parentQuasar.Notify.create({
+                            parentQuasar.Notify.create({
                                 color: 'red-5',
                                 textColor: 'white',
                                 icon: 'warning',
                                 message: 'You need to accept the license and terms first'
                             })
                         } else {
-                            window.parentQuasar.Notify.create({
+                            parentQuasar.Notify.create({
                                 color: 'green-4',
                                 textColor: 'white',
                                 icon: 'cloud_done',

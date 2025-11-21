@@ -26,7 +26,7 @@
 
         const counter = ref(window.globalStore.counterStore.count);
 
-        window.parent.mobx.reaction(
+        mobx.reaction(
           () => window.globalStore.counterStore.count,
           (newValue) => {
             counter.value = newValue;

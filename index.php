@@ -94,7 +94,7 @@
         const iframeHeight = ref(`${window.globalStore.appStore.qPageMinHeight - 6}px`);
 
 
-        window.parent.mobx.reaction(
+        mobx.reaction(
           () => ({
             left: window.globalStore.appStore.leftDrawerOpen,
             right: window.globalStore.appStore.rightDrawerOpen,

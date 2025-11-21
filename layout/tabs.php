@@ -63,7 +63,7 @@
                 const prevTab = ref(tab.value);
                 const iframeHeight = ref(`${window.globalStore.appStore.qPageMinHeight - 60}px`);
 
-                window.parent.mobx.reaction(
+                mobx.reaction(
                     () => ({
                         tabs: window.globalStore.tabsStore.tabs,
                         tab: window.globalStore.tabsStore.tab,
@@ -75,7 +75,7 @@
                     }
                 );
 
-                window.parent.mobx.reaction(
+                mobx.reaction(
                     () => ({
                         qPageMinHeight: window.globalStore.appStore.qPageMinHeight,
                     }),
