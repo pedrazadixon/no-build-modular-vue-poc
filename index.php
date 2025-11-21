@@ -17,7 +17,7 @@
             </q-avatar>
             Title
           </q-toolbar-title>
-
+          <q-btn dense flat round icon="brightness_4" @click="toggleDarkMode"></q-btn>
           <q-btn dense flat round icon="menu" @click="toggleRightDrawer"></q-btn>
         </q-toolbar>
       </q-header>
@@ -87,6 +87,7 @@
 
     const app = createApp({
       setup() {
+        initializeApp();
 
         const leftDrawerOpen = ref(window.globalStore.appStore.leftDrawerOpen);
         const rightDrawerOpen = ref(window.globalStore.appStore.rightDrawerOpen);
@@ -196,6 +197,7 @@
           toggleLeftDrawer: window.globalStore.appStore.toggleLeftDrawer,
           rightDrawerOpen,
           toggleRightDrawer: window.globalStore.appStore.toggleRightDrawer,
+          toggleDarkMode: window.globalStore.appStore.toggleDarkMode,
           mainMenu,
           addTab,
           myStyleFunction,

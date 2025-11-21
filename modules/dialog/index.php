@@ -21,6 +21,7 @@
 
         const app = createApp({
             setup() {
+                initializeApp();
 
                 const confirm = () => {
                     window.parentQuasar.Dialog.create({

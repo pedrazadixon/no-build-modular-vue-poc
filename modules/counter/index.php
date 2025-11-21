@@ -7,8 +7,8 @@
   <div id="q-app">
     <div>Counter: {{ counter }}</div>
     <div>
-      <q-btn @click="decrement" label="Decrement"></q-btn>
-      <q-btn @click="increment" label="Increment"></q-btn>
+      <q-btn @click="decrement" label="Decrement" color="primary"></q-btn>
+      <q-btn @click="increment" label="Increment" color="primary"></q-btn>
     </div>
   </div>
 
@@ -22,6 +22,8 @@
 
     const app = createApp({
       setup() {
+        initializeApp();
+
         const counter = ref(window.globalStore.counterStore.count);
 
         window.parent.mobx.reaction(

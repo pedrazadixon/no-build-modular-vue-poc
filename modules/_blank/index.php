@@ -17,6 +17,8 @@
 
         const app = createApp({
             setup() {
+                initializeApp();
+
                 return {};
             },
         });

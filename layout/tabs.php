@@ -56,6 +56,8 @@
 
         const app = createApp({
             setup() {
+                initializeApp();
+
                 const tabs = ref(window.globalStore.tabsStore.tabs);
                 const tab = ref(window.globalStore.tabsStore.tab);
                 const prevTab = ref(tab.value);

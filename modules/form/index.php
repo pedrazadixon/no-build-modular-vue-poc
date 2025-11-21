@@ -116,6 +116,7 @@
         const app = createApp({
 
             setup() {
+                initializeApp();
 
                 const name = ref(null)
                 const email = ref(null)

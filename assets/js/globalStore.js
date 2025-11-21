@@ -2,6 +2,7 @@ class AppStore {
   leftDrawerOpen = true;
   rightDrawerOpen = false;
   qPageMinHeight = 100;
+  darkMode = false;
 
   constructor() {
     window.mobx.makeAutoObservable(this);
@@ -13,6 +14,10 @@ class AppStore {
 
   toggleRightDrawer = () => {
     this.rightDrawerOpen = !this.rightDrawerOpen;
+  };
+
+  toggleDarkMode = () => {
+    this.darkMode = !this.darkMode;
   };
 }
 
