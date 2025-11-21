@@ -23,15 +23,20 @@
                     </q-tab>
                 </q-tabs>
 
-                <q-tab-panels v-model="tab" animated keep-alive style="margin: 0;">
-                    <q-tab-panel
-                        style="padding: 0;"
+                <div style="margin: 0;">
+                    <div
                         v-for="tabItem in tabs"
                         :key="tabItem.name"
-                        :name="tabItem.name">
-                        <iframe :src="tabItem.url" frameborder="0" style="width: 100%;" :style="{ minHeight: iframeHeight, height: iframeHeight }"></iframe>
-                    </q-tab-panel>
-                </q-tab-panels>
+                        v-show="tab === tabItem.name"
+                        style="padding: 0;">
+                        <iframe
+                            :src="tabItem.url"
+                            frameborder="0"
+                            style="width: 100%;"
+                            :style="{ minHeight: iframeHeight, height: iframeHeight }">
+                        </iframe>
+                    </div>
+                </div>
 
             </div>
         </div>
@@ -63,18 +68,14 @@
                     }
                 );
 
-
-
                 window.parent.mobx.reaction(
                     () => ({
                         qPageMinHeight: window.globalStore.appStore.qPageMinHeight,
                     }),
                     (newValues) => {
                         iframeHeight.value = `${newValues.qPageMinHeight - 60}px`;
-
                     }
                 );
-
 
                 return {
                     tabs,
