@@ -14,26 +14,22 @@
                     mobile-arrows
                     align="left"
                     class="bg-primary text-white shadow-2">
-                    <q-tab name="mails" icon="mail" label="Mails"></q-tab>
-                    <q-tab name="alarms" icon="alarm" label="Alarms"></q-tab>
-                    <q-tab name="movies" icon="movie" label="Movies"></q-tab>
+                    <q-tab
+                        v-for="tabItem in tabs"
+                        :key="tabItem.name"
+                        :name="tabItem.name"
+                        :icon="tabItem.icon"
+                        :label="tabItem.label">
+                    </q-tab>
                 </q-tabs>
 
-
-                <q-tab-panels v-model="tab" animated keep-alive>
-                    <q-tab-panel name="mails">
-                        <div class="text-h6">Mails</div>
-                        Lorem ipsum 1 dolor sit amet consectetur adipisicing elit.
-                    </q-tab-panel>
-
-                    <q-tab-panel name="alarms">
-                        <div class="text-h6">Alarms</div>
-                        Lorem ipsum 2 dolor sit amet consectetur adipisicing elit.
-                    </q-tab-panel>
-
-                    <q-tab-panel name="movies">
-                        <div class="text-h6">Movies</div>
-                        Lorem ipsum 3 dolor sit amet consectetur adipisicing elit.
+                <q-tab-panels v-model="tab" animated keep-alive style="margin: 0;">
+                    <q-tab-panel
+                        style="padding: 0;"
+                        v-for="tabItem in tabs"
+                        :key="tabItem.name"
+                        :name="tabItem.name">
+                        <iframe :src="tabItem.url" frameborder="0" style="width: 100%;"></iframe>
                     </q-tab-panel>
                 </q-tab-panels>
 
@@ -52,10 +48,24 @@
 
         const app = createApp({
             setup() {
-                const tab = ref('mails');
+                const tabs = ref(window.globalStore.tabsStore.tabs);
+                const tab = ref(window.globalStore.tabsStore.tab);
+
+                window.parent.mobx.reaction(
+                    () => ({
+                        tabs: window.globalStore.tabsStore.tabs,
+                        tab: window.globalStore.tabsStore.tab,
+                    }),
+                    (newValues) => {
+                        tabs.value = newValues.tabs;
+                        tab.value = newValues.tab;
+                    }
+                );
 
                 return {
+                    tabs,
                     tab,
+                    addTab: window.globalStore.tabsStore.addTab,
                 };
             },
         });

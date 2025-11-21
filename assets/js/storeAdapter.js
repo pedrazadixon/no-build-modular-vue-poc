@@ -13,6 +13,7 @@
 
   const parentMobx = getParentGlobal("mobx");
   const parentStore = getParentGlobal("globalStore");
+  const parentQuasar = getParentGlobal("Quasar");
 
   if (parentMobx) {
     window.mobx = parentMobx;
@@ -20,5 +21,9 @@
 
   if (parentStore) {
     window.globalStore = parentStore;
+  }
+
+  if (parentQuasar) {
+    window.parentQuasar = parentQuasar;
   }
 })();

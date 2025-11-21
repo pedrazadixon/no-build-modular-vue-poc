@@ -22,10 +22,10 @@
 
     const app = createApp({
       setup() {
-        const counter = ref(window.parent.globalStore.count);
+        const counter = ref(window.globalStore.counterStore.count);
 
         window.parent.mobx.reaction(
-          () => window.parent.globalStore.count,
+          () => window.globalStore.counterStore.count,
           (newValue) => {
             counter.value = newValue;
           }
@@ -33,8 +33,8 @@
 
         return {
           counter,
-          increment: window.parent.globalStore.increment,
-          decrement: window.parent.globalStore.decrement,
+          increment: window.globalStore.counterStore.increment,
+          decrement: window.globalStore.counterStore.decrement,
         };
       },
     });
