@@ -17,7 +17,6 @@
 
         const app = createApp({
             setup() {
-                const counter = ref(window.globalStore.counterStore.count);
                 return {};
             },
         });

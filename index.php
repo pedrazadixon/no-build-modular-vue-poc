@@ -30,7 +30,7 @@
             <template v-for="menuItem in mainMenu" :key="menuItem.text">
               <q-item v-if="!menuItem.items" v-ripple clickable @click="addTab(menuItem)">
                 <q-item-section avatar>
-                  <q-icon color="grey" :name="menuItem.icon" />
+                  <q-icon color="grey" :name="menuItem.icon"></q-icon>
                 </q-item-section>
                 <q-item-section>
                   <q-item-label>{{ menuItem.text }}</q-item-label>
@@ -45,7 +45,7 @@
                 <q-list padding>
                   <q-item v-for="subMenuItem in menuItem.items" :key="subMenuItem.text" v-ripple clickable @click="addTab(subMenuItem)">
                     <q-item-section avatar>
-                      <q-icon color="grey" :name="subMenuItem.icon" />
+                      <q-icon color="grey" :name="subMenuItem.icon"></q-icon>
                     </q-item-section>
                     <q-item-section>
                       <q-item-label>{{ subMenuItem.text }}</q-item-label>
@@ -142,6 +142,11 @@
             icon: 'note_add',
             text: 'Blank',
             url: '<?php echo BASE_URL ?>modules/_blank/index.php',
+          },
+          {
+            icon: 'sms',
+            text: 'Dialog',
+            url: '<?php echo BASE_URL ?>modules/dialog/index.php',
           },
           {
             icon: 'whatshot',
