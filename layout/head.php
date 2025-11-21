@@ -17,14 +17,14 @@ define('BASE_URL', 'http://localhost/no-build-modular-vue-poc/');
         }
 
         .tab-content {
-            transition: transform 0.3s ease, opacity 0.3s ease;
-            transform: translateX(-100%);
+            transition: transform 0.25s ease, opacity 0.25s ease;
+            transform: translate(100%, 2%);
             opacity: 0;
             pointer-events: none;
         }
 
         .tab-content.active {
-            transform: translateX(0);
+            transform: translate(0, 0);
             opacity: 1;
             pointer-events: auto;
             position: relative !important;
