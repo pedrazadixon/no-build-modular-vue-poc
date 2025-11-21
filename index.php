@@ -68,7 +68,9 @@
       </q-drawer>
 
       <q-page-container>
-        <iframe src="<?php echo BASE_URL ?>layout/tabs.php" frameborder="0" style="width: 100%;" height="600"></iframe>
+        <q-page :style-fn="myStyleFunction">
+          <iframe src="<?php echo BASE_URL ?>layout/tabs.php" frameborder="0" style="width: 100%;" :style="{ minHeight: iframeHeight, height: iframeHeight }"></iframe>
+        </q-page>
       </q-page-container>
 
     </q-layout>
@@ -88,15 +90,19 @@
 
         const leftDrawerOpen = ref(window.globalStore.appStore.leftDrawerOpen);
         const rightDrawerOpen = ref(window.globalStore.appStore.rightDrawerOpen);
+        const iframeHeight = ref(`${window.globalStore.appStore.qPageMinHeight - 6}px`);
+
 
         window.parent.mobx.reaction(
           () => ({
             left: window.globalStore.appStore.leftDrawerOpen,
-            right: window.globalStore.appStore.rightDrawerOpen
+            right: window.globalStore.appStore.rightDrawerOpen,
+            qPageMinHeight: window.globalStore.appStore.qPageMinHeight,
           }),
           (newValues) => {
             leftDrawerOpen.value = newValues.left;
             rightDrawerOpen.value = newValues.right;
+            iframeHeight.value = `${newValues.qPageMinHeight - 6}px`;
           }
         );
 
@@ -109,6 +115,13 @@
           }
           window.globalStore.tabsStore.addTab(tabInfo);
         };
+
+        const myStyleFunction = (offset, height) => {
+          window.globalStore.appStore.qPageMinHeight = (height - offset);
+          return {
+            minHeight: (height - offset) + 'px'
+          }
+        }
 
 
         const mainMenu = [{
@@ -176,6 +189,8 @@
           toggleRightDrawer: window.globalStore.appStore.toggleRightDrawer,
           mainMenu,
           addTab,
+          myStyleFunction,
+          iframeHeight,
         }
       }
     });

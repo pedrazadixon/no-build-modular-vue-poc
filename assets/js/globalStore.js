@@ -1,6 +1,7 @@
 class AppStore {
   leftDrawerOpen = true;
   rightDrawerOpen = false;
+  qPageMinHeight = 100;
 
   constructor() {
     window.mobx.makeAutoObservable(this);

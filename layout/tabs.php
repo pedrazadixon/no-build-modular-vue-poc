@@ -29,7 +29,7 @@
                         v-for="tabItem in tabs"
                         :key="tabItem.name"
                         :name="tabItem.name">
-                        <iframe :src="tabItem.url" frameborder="0" style="width: 100%;"></iframe>
+                        <iframe :src="tabItem.url" frameborder="0" style="width: 100%;" :style="{ minHeight: iframeHeight, height: iframeHeight }"></iframe>
                     </q-tab-panel>
                 </q-tab-panels>
 
@@ -50,6 +50,7 @@
             setup() {
                 const tabs = ref(window.globalStore.tabsStore.tabs);
                 const tab = ref(window.globalStore.tabsStore.tab);
+                const iframeHeight = ref(`${window.globalStore.appStore.qPageMinHeight - 60}px`);
 
                 window.parent.mobx.reaction(
                     () => ({
@@ -62,10 +63,24 @@
                     }
                 );
 
+
+
+                window.parent.mobx.reaction(
+                    () => ({
+                        qPageMinHeight: window.globalStore.appStore.qPageMinHeight,
+                    }),
+                    (newValues) => {
+                        iframeHeight.value = `${newValues.qPageMinHeight - 60}px`;
+
+                    }
+                );
+
+
                 return {
                     tabs,
                     tab,
                     addTab: window.globalStore.tabsStore.addTab,
+                    iframeHeight,
                 };
             },
         });
