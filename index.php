@@ -13,9 +13,9 @@
 
           <q-toolbar-title>
             <q-avatar>
-              <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
+              <img src="https://placehold.co/38x38?text=Logo">
             </q-avatar>
-            Title
+            App
           </q-toolbar-title>
           <q-btn dense flat round icon="brightness_4" @click="toggleDarkMode"></q-btn>
           <q-btn dense flat round icon="menu" @click="toggleRightDrawer"></q-btn>
