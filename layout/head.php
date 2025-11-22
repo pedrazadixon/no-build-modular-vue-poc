@@ -1,6 +1,4 @@
-<?php
-define('BASE_URL', 'http://localhost/no-build-modular-vue-poc/');
-?>
+<?php require_once __DIR__ . '/../config/constants.php'; ?>
 
 <head>
     <meta charset="UTF-8" />
