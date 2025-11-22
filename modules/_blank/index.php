@@ -5,6 +5,7 @@
 
 <body>
     <div id="q-app">
+        <!-- Your module content will go here -->
     </div>
 
     <?php include '../../layout/scripts.php'; ?>
@@ -19,7 +20,11 @@
             setup() {
                 initializeApp();
 
-                return {};
+                // Your module logic will go here
+
+                return {
+                    // Your module data will go here
+                };
             },
         });
 
