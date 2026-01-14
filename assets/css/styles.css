@@ -18,10 +18,17 @@ body {
 }
 
 .tab-with-close .close-tab-btn {
-    opacity: 0;
-    transition: opacity 0.2s ease;
+    align-self: start;
+    margin-left: 10px;
+    padding: 3px 7px;
+    border-radius: 50%;
+    line-height: 0px;
 }
 
-.tab-with-close:hover .close-tab-btn {
-    opacity: 1;
+.close-tab-btn:hover>.q-focus-helper {
+    opacity: 0.4 !important;
+}
+
+.q-tab {
+    padding: 0 6px 0 16px;
 }

@@ -21,7 +21,7 @@
                         :icon="tabItem.icon"
                         :label="tabItem.label"
                         class="tab-with-close">
-                        <q-btn flat icon="close" size="xs" class="close-tab-btn" style="padding: 0px 4px; position: absolute; top: 0px; right: -16px;" @click.stop="closeTab(tabItem.name)"></q-btn>
+                        <q-btn flat unelevated ripple="false" glossy="false" label="✕" size="xs" class="close-tab-btn" @click.stop="closeTab(tabItem.name)"></q-btn>
                     </q-tab>
                 </q-tabs>
 
