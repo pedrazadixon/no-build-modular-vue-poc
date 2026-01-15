@@ -1,4 +1,4 @@
-var initializeApp = function () {
+function initializeApp() {
   // Initialize dark mode state
   Quasar.Dark.set(window.globalStore.appStore.darkMode);
 
@@ -9,4 +9,6 @@ var initializeApp = function () {
       Quasar.Dark.set(newValue);
     }
   );
-};
+}
+
+window.initializeApp = initializeApp;

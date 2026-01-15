@@ -24,19 +24,15 @@
       setup() {
         initializeApp();
 
-        const counter = ref(window.globalStore.counterStore.count);
-
-        mobx.reaction(
-          () => window.globalStore.counterStore.count,
-          (newValue) => {
-            counter.value = newValue;
-          }
+        const { count: counter, increment, decrement } = useMobxStore(
+          window.globalStore.counterStore,
+          ['count', 'increment', 'decrement']
         );
 
         return {
           counter,
-          increment: window.globalStore.counterStore.increment,
-          decrement: window.globalStore.counterStore.decrement,
+          increment,
+          decrement,
         };
       },
     });

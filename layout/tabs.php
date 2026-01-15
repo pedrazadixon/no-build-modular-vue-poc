@@ -51,46 +51,32 @@
     <script>
         const {
             createApp,
-            ref
+            ref,
+            computed
         } = Vue;
 
         const app = createApp({
             setup() {
                 initializeApp();
 
-                const tabs = ref(window.globalStore.tabsStore.tabs);
-                const tab = ref(window.globalStore.tabsStore.tab);
-                const prevTab = ref(tab.value);
-                const iframeHeight = ref(`${window.globalStore.appStore.qPageMinHeight - 60}px`);
-
-                mobx.reaction(
-                    () => ({
-                        tabs: window.globalStore.tabsStore.tabs,
-                        tab: window.globalStore.tabsStore.tab,
-                    }),
-                    (newValues) => {
-                        tabs.value = newValues.tabs;
-                        prevTab.value = tab.value;
-                        tab.value = newValues.tab;
-                    }
+                const { tabs, tab, addTab, closeTab } = useMobxStore(
+                    window.globalStore.tabsStore,
+                    ['tabs', 'tab', 'addTab', 'closeTab']
                 );
 
-                mobx.reaction(
-                    () => ({
-                        qPageMinHeight: window.globalStore.appStore.qPageMinHeight,
-                    }),
-                    (newValues) => {
-                        iframeHeight.value = `${newValues.qPageMinHeight - 60}px`;
-                    }
+                const { qPageMinHeight } = useMobxStore(
+                    window.globalStore.appStore,
+                    ['qPageMinHeight']
                 );
+
+                const iframeHeight = computed(() => `${qPageMinHeight.value - 60}px`);
 
                 return {
                     tabs,
                     tab,
-                    addTab: window.globalStore.tabsStore.addTab,
-                    closeTab: window.globalStore.tabsStore.closeTab,
+                    addTab,
+                    closeTab,
                     iframeHeight,
-
                 };
             },
         });

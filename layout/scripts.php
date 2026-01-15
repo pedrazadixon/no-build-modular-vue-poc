@@ -3,4 +3,5 @@
 <script src="https://cdn.jsdelivr.net/npm/mobx@6.15.0/dist/mobx.umd.production.min.js"></script>
 <script src="<?php echo BASE_URL; ?>assets/js/crossWindowBridge.js?<?php echo time(); ?>"></script>
 <script src="<?php echo BASE_URL; ?>assets/js/globalStore.js?<?php echo time(); ?>"></script>
+<script src="<?php echo BASE_URL; ?>assets/js/useMobxStore.js?<?php echo time(); ?>"></script>
 <script src="<?php echo BASE_URL; ?>assets/js/initialize.js?<?php echo time(); ?>"></script>

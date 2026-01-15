@@ -61,21 +61,18 @@
             setup() {
                 initializeApp();
 
-                const rightDrawerOpen = ref(window.globalStore.appStore.rightDrawerOpen);
-
-                mobx.reaction(
-                    () => ({
-                        right: window.globalStore.appStore.rightDrawerOpen,
-                    }),
-                    (newValues) => {
-                        rightDrawerOpen.value = newValues.right;
-                    }
+                const {
+                    rightDrawerOpen,
+                    toggleRightDrawer
+                } = useMobxStore(
+                    window.globalStore.appStore,
+                    ['rightDrawerOpen', 'toggleRightDrawer']
                 );
 
                 const phoneNumber = ref('');
                 return {
                     phoneNumber,
-                    toggleRightDrawer: window.globalStore.appStore.toggleRightDrawer,
+                    toggleRightDrawer,
                 };
             },
         });

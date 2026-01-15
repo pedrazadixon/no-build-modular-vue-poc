@@ -86,38 +86,44 @@
   <script>
     const {
       createApp,
-      ref
+      ref,
+      computed
     } = Vue;
 
     const app = createApp({
       setup() {
         initializeApp();
 
-        const leftDrawerOpen = ref(window.globalStore.appStore.leftDrawerOpen);
-        const rightDrawerOpen = ref(window.globalStore.appStore.rightDrawerOpen);
-        const iframeHeight = ref(`${window.globalStore.appStore.qPageMinHeight - 6}px`);
-
-        mobx.reaction(
-          () => ({
-            left: window.globalStore.appStore.leftDrawerOpen,
-            right: window.globalStore.appStore.rightDrawerOpen,
-            qPageMinHeight: window.globalStore.appStore.qPageMinHeight,
-          }),
-          (newValues) => {
-            leftDrawerOpen.value = newValues.left;
-            rightDrawerOpen.value = newValues.right;
-            iframeHeight.value = `${newValues.qPageMinHeight - 6}px`;
-          }
+        const {
+          leftDrawerOpen,
+          rightDrawerOpen,
+          qPageMinHeight,
+          toggleLeftDrawer,
+          toggleRightDrawer,
+          toggleDarkMode
+        } = useMobxStore(
+          window.globalStore.appStore,
+          ['leftDrawerOpen', 'rightDrawerOpen', 'qPageMinHeight', 'toggleLeftDrawer', 'toggleRightDrawer', 'toggleDarkMode']
         );
 
+        const {
+          addTab: addTabToStore
+        } = useMobxStore(
+          window.globalStore.tabsStore,
+          ['addTab']
+        );
+
+        // Computed property for iframe height
+        const iframeHeight = computed(() => `${qPageMinHeight.value - 6}px`);
+
         const addTab = (menuItem) => {
-          tabInfo = {
+          const tabInfo = {
             name: menuItem.text,
             icon: menuItem.icon,
             label: menuItem.text,
             url: menuItem.url
-          }
-          window.globalStore.tabsStore.addTab(tabInfo);
+          };
+          addTabToStore(tabInfo);
         };
 
         const qPageStyleFunction = (offset, height) => {
@@ -125,21 +131,21 @@
           return {
             minHeight: (height - offset) + 'px'
           }
-        }
+        };
 
         const mainMenu = <?php echo json_encode(include 'config/menu.php'); ?>;
 
         return {
           leftDrawerOpen,
-          toggleLeftDrawer: window.globalStore.appStore.toggleLeftDrawer,
+          toggleLeftDrawer,
           rightDrawerOpen,
-          toggleRightDrawer: window.globalStore.appStore.toggleRightDrawer,
-          toggleDarkMode: window.globalStore.appStore.toggleDarkMode,
+          toggleRightDrawer,
+          toggleDarkMode,
           mainMenu,
           addTab,
           qPageStyleFunction,
           iframeHeight,
-        }
+        };
       }
     });
 
