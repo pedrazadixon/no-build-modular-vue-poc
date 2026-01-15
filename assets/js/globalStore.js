@@ -40,26 +40,7 @@ class CounterStore {
 class TabsStore {
   tab = "mails";
 
-  tabs = [
-    // {
-    //   name: "mails",
-    //   icon: "mail",
-    //   label: "Mails",
-    //   url: "https://placehold.co/400?text=Mails",
-    // },
-    // {
-    //   name: "alarms",
-    //   icon: "alarm",
-    //   label: "Alarms",
-    //   url: "https://placehold.co/400?text=Alarms",
-    // },
-    // {
-    //   name: "movies",
-    //   icon: "movie",
-    //   label: "Movies",
-    //   url: "https://placehold.co/400?text=Movies",
-    // },
-  ];
+  tabs = [];
 
   constructor() {
     window.mobx.makeAutoObservable(this);
