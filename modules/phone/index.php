@@ -6,6 +6,21 @@
 <body>
     <div id="q-app">
 
+
+        <div style="display: flex; justify-content: space-between; align-items: center;" class="q-px-md q-py-sm">
+            <div class="text-h6">Telephony</div>
+            <div>
+                <q-btn round flat icon="keyboard_double_arrow_right" @click="toggleRightDrawer">
+                    <!-- <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
+                        <path d="M300-640v320l160-160-160-160ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm440-80h120v-560H640v560Zm-80 0v-560H200v560h360Zm80 0h120-120Z" />
+                    </svg> -->
+                </q-btn>
+
+
+
+            </div>
+        </div>
+
         <div class="phone-container">
 
             <div class="full-width q-my-md">
@@ -45,9 +60,22 @@
         const app = createApp({
             setup() {
                 initializeApp();
+
+                const rightDrawerOpen = ref(window.globalStore.appStore.rightDrawerOpen);
+
+                mobx.reaction(
+                    () => ({
+                        right: window.globalStore.appStore.rightDrawerOpen,
+                    }),
+                    (newValues) => {
+                        rightDrawerOpen.value = newValues.right;
+                    }
+                );
+
                 const phoneNumber = ref('');
                 return {
-                    phoneNumber
+                    phoneNumber,
+                    toggleRightDrawer: window.globalStore.appStore.toggleRightDrawer,
                 };
             },
         });
