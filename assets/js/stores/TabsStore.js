@@ -1,42 +1,3 @@
-class AppStore {
-  leftDrawerOpen = true;
-  rightDrawerOpen = true;
-  qPageMinHeight = 100;
-  darkMode = false;
-
-  constructor() {
-    window.mobx.makeAutoObservable(this);
-  }
-
-  toggleLeftDrawer = () => {
-    this.leftDrawerOpen = !this.leftDrawerOpen;
-  };
-
-  toggleRightDrawer = () => {
-    this.rightDrawerOpen = !this.rightDrawerOpen;
-  };
-
-  toggleDarkMode = () => {
-    this.darkMode = !this.darkMode;
-  };
-}
-
-class CounterStore {
-  count = 0;
-
-  constructor() {
-    window.mobx.makeAutoObservable(this);
-  }
-
-  increment = () => {
-    this.count++;
-  };
-
-  decrement = () => {
-    this.count--;
-  };
-}
-
 class TabsStore {
   tab = "mails";
 
@@ -79,9 +40,9 @@ class TabsStore {
   };
 }
 
-if (!window.globalStore) {
-  window.globalStore = {};
-  window.globalStore.appStore = new AppStore();
-  window.globalStore.counterStore = new CounterStore();
+
+
+
+if (!window.globalStore) window.globalStore = {};
+if (!window.globalStore.tabsStore)
   window.globalStore.tabsStore = new TabsStore();
-}
