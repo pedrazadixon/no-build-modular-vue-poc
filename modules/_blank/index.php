@@ -6,6 +6,11 @@
 <body>
     <div id="q-app">
         <!-- Your module content will go here -->
+
+        <div v-for="n in 60" :key="n">
+            Item {{ n }}
+        </div>
+
     </div>
 
     <?php include '../../layout/scripts.php'; ?>

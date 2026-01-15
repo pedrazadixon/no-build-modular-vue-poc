@@ -1,12 +1,5 @@
 <?php
 
-/**
- * Main Menu Configuration
- * 
- * Esta estructura será reemplazada en el futuro por datos desde la base de datos.
- * Por ahora, mantiene la configuración estática del menú principal.
- */
-
 return [
     [
         'icon' => 'home',

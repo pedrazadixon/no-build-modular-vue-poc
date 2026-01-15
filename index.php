@@ -29,6 +29,7 @@
           <q-list padding>
 
             <template v-for="menuItem in mainMenu" :key="menuItem.text">
+
               <q-item v-if="!menuItem.items" v-ripple clickable @click="addTab(menuItem)">
                 <q-item-section avatar>
                   <q-icon color="grey" :name="menuItem.icon"></q-icon>
@@ -38,11 +39,7 @@
                 </q-item-section>
               </q-item>
 
-              <q-expansion-item
-                v-else
-                :expand-separator="true"
-                :icon="menuItem.icon"
-                :label="menuItem.text">
+              <q-expansion-item v-else :expand-separator="true" :icon="menuItem.icon" :label="menuItem.text" class="menu-expansion-item" content-inset-level="1">
                 <q-list padding>
                   <q-item v-for="subMenuItem in menuItem.items" :key="subMenuItem.text" v-ripple clickable @click="addTab(subMenuItem)">
                     <q-item-section avatar>
@@ -54,6 +51,7 @@
                   </q-item>
                 </q-list>
               </q-expansion-item>
+
             </template>
 
           </q-list>
@@ -63,10 +61,9 @@
       </q-drawer>
 
       <q-drawer v-model="rightDrawerOpen" side="right" bordered>
-        <div v-for="n in 60" :key="n">
-          Item {{ n }}
-        </div>
+        <iframe src="<?php echo BASE_URL ?>modules/phone/index.php" frameborder="0" style="width: 100%;" :style="{ minHeight: iframeHeight, height: iframeHeight }"></iframe>
       </q-drawer>
+
 
       <q-page-container>
         <q-page :style-fn="qPageStyleFunction">
@@ -75,6 +72,12 @@
       </q-page-container>
 
     </q-layout>
+
+
+    <div class="phone-opener" v-show="!rightDrawerOpen">
+      <q-btn round color="red" icon="phone"></q-btn>
+      <q-btn round flat color="white" icon="keyboard_double_arrow_left" @click="toggleRightDrawer"></q-btn>
+    </div>
 
   </div>
 
