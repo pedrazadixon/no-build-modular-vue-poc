@@ -1,39 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php require_once '../../layout/head.php'; ?>
 
-<?php include '../../layout/head.php'; ?>
-
-<body>
-    <div id="q-app">
-        <!-- Your module content will go here -->
-
-        <div v-for="n in 60" :key="n">
-            Item {{ n }}
-        </div>
-
+<div id="q-app">
+    <!-- Your module content will go here -->
+    <div v-for="n in 60" :key="n">
+        Item {{ n }}
     </div>
 
-    <?php include '../../layout/scripts.php'; ?>
+</div>
 
-    <script>
-        const {
-            createApp,
-            ref
-        } = Vue;
+<?php require_once '../../layout/scripts.php'; ?>
 
-        const app = createApp({
-            setup() {
-                // Your module logic will go here
+<script>
+    const {
+        createApp,
+        ref
+    } = Vue;
 
-                return {
-                    // Your module data will go here
-                };
-            },
-        });
+    const app = createApp({
+        setup() {
+            // Your module logic will go here
 
-        app.use(Quasar).use(DarkModeSync);
-        app.mount("#q-app");
-    </script>
-</body>
+            return {
+                // Your module data will go here
+            };
+        },
+    });
 
-</html>
+    app.use(Quasar).use(DarkModeSync);
+    app.mount("#q-app");
+</script>
+
+<?php require_once '../../layout/footer.php'; ?>

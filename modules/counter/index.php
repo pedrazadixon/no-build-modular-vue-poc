@@ -1,43 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php require_once '../../layout/head.php'; ?>
 
-<?php include '../../layout/head.php'; ?>
-
-<body>
-  <div id="q-app">
-    <div>Counter: {{ counter }}</div>
-    <div>
-      <q-btn @click="decrement" label="Decrement" color="primary"></q-btn>
-      <q-btn @click="increment" label="Increment" color="primary"></q-btn>
-    </div>
+<div id="q-app">
+  <div>Counter: {{ counter }}</div>
+  <div>
+    <q-btn @click="decrement" label="Decrement" color="primary"></q-btn>
+    <q-btn @click="increment" label="Increment" color="primary"></q-btn>
   </div>
+</div>
 
-  <?php include '../../layout/scripts.php'; ?>
+<?php require_once '../../layout/scripts.php'; ?>
 
-  <script>
-    const {
-      createApp,
-      ref
-    } = Vue;
+<script>
+  const {
+    createApp,
+    ref
+  } = Vue;
 
-    const app = createApp({
-      setup() {
-        const { count: counter, increment, decrement } = useMobxStore(
-          window.globalStore.counterStore,
-          ['count', 'increment', 'decrement']
-        );
+  const app = createApp({
+    setup() {
+      const {
+        count: counter,
+        increment,
+        decrement
+      } = useMobxStore(
+        window.globalStore.counterStore,
+        ['count', 'increment', 'decrement']
+      );
 
-        return {
-          counter,
-          increment,
-          decrement,
-        };
-      },
-    });
+      return {
+        counter,
+        increment,
+        decrement,
+      };
+    },
+  });
 
-    app.use(Quasar).use(DarkModeSync);
-    app.mount("#q-app");
-  </script>
-</body>
+  app.use(Quasar).use(DarkModeSync);
+  app.mount("#q-app");
+</script>
 
-</html>
+<?php require_once '../../layout/footer.php'; ?>

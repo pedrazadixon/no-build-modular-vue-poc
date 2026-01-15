@@ -1,157 +1,153 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <?php require_once __DIR__ . '/layout/head.php'; ?>
 
-<body>
-  <div id="q-app">
+<div id="q-app">
 
-    <q-layout view="hHh lpR fFf">
+  <q-layout view="hHh lpR fFf">
 
-      <q-header reveal elevated class="bg-primary text-white">
-        <q-toolbar>
-          <q-btn dense flat round icon="menu" @click="toggleLeftDrawer"></q-btn>
+    <q-header reveal elevated class="bg-primary text-white">
+      <q-toolbar>
+        <q-btn dense flat round icon="menu" @click="toggleLeftDrawer"></q-btn>
 
-          <q-toolbar-title>
-            <q-avatar>
-              <img src="https://placehold.co/38x38?text=Logo">
-            </q-avatar>
-            App
-          </q-toolbar-title>
-          <q-btn dense flat round icon="brightness_4" @click="toggleDarkMode"></q-btn>
-          <q-btn dense flat round icon="menu" @click="toggleRightDrawer"></q-btn>
-        </q-toolbar>
-      </q-header>
+        <q-toolbar-title>
+          <q-avatar>
+            <img src="https://placehold.co/38x38?text=Logo">
+          </q-avatar>
+          App
+        </q-toolbar-title>
+        <q-btn dense flat round icon="brightness_4" @click="toggleDarkMode"></q-btn>
+        <q-btn dense flat round icon="menu" @click="toggleRightDrawer"></q-btn>
+      </q-toolbar>
+    </q-header>
 
-      <q-drawer v-model="leftDrawerOpen" side="left" bordered>
+    <q-drawer v-model="leftDrawerOpen" side="left" bordered>
 
-        <q-scroll-area class="fit">
-          <q-list padding>
+      <q-scroll-area class="fit">
+        <q-list padding>
 
-            <template v-for="menuItem in mainMenu" :key="menuItem.text">
+          <template v-for="menuItem in mainMenu" :key="menuItem.text">
 
-              <q-item v-if="!menuItem.items" v-ripple clickable @click="addTab(menuItem)">
-                <q-item-section avatar>
-                  <q-icon color="grey" :name="menuItem.icon"></q-icon>
-                </q-item-section>
-                <q-item-section>
-                  <q-item-label>{{ menuItem.text }}</q-item-label>
-                </q-item-section>
-              </q-item>
+            <q-item v-if="!menuItem.items" v-ripple clickable @click="addTab(menuItem)">
+              <q-item-section avatar>
+                <q-icon color="grey" :name="menuItem.icon"></q-icon>
+              </q-item-section>
+              <q-item-section>
+                <q-item-label>{{ menuItem.text }}</q-item-label>
+              </q-item-section>
+            </q-item>
 
-              <q-expansion-item v-else :expand-separator="true" :icon="menuItem.icon" :label="menuItem.text" class="menu-expansion-item" content-inset-level="1">
-                <q-list padding>
-                  <q-item v-for="subMenuItem in menuItem.items" :key="subMenuItem.text" v-ripple clickable @click="addTab(subMenuItem)">
-                    <q-item-section avatar>
-                      <q-icon color="grey" :name="subMenuItem.icon"></q-icon>
-                    </q-item-section>
-                    <q-item-section>
-                      <q-item-label>{{ subMenuItem.text }}</q-item-label>
-                    </q-item-section>
-                  </q-item>
-                </q-list>
-              </q-expansion-item>
+            <q-expansion-item v-else :expand-separator="true" :icon="menuItem.icon" :label="menuItem.text" class="menu-expansion-item" content-inset-level="1">
+              <q-list padding>
+                <q-item v-for="subMenuItem in menuItem.items" :key="subMenuItem.text" v-ripple clickable @click="addTab(subMenuItem)">
+                  <q-item-section avatar>
+                    <q-icon color="grey" :name="subMenuItem.icon"></q-icon>
+                  </q-item-section>
+                  <q-item-section>
+                    <q-item-label>{{ subMenuItem.text }}</q-item-label>
+                  </q-item-section>
+                </q-item>
+              </q-list>
+            </q-expansion-item>
 
-            </template>
+          </template>
 
-          </q-list>
+        </q-list>
 
-        </q-scroll-area>
+      </q-scroll-area>
 
-      </q-drawer>
+    </q-drawer>
 
-      <q-drawer v-model="rightDrawerOpen" side="right" bordered>
-        <iframe src="<?php echo BASE_URL ?>modules/phone/index.php" frameborder="0" style="width: 100%;" :style="{ minHeight: iframeHeight, height: iframeHeight }"></iframe>
-      </q-drawer>
-
-
-      <q-page-container>
-        <q-page :style-fn="qPageStyleFunction">
-          <iframe src="<?php echo BASE_URL ?>layout/tabs.php" frameborder="0" style="width: 100%;" :style="{ minHeight: iframeHeight, height: iframeHeight }"></iframe>
-        </q-page>
-      </q-page-container>
-
-    </q-layout>
+    <q-drawer v-model="rightDrawerOpen" side="right" bordered>
+      <iframe src="<?php echo BASE_URL ?>modules/phone/index.php" frameborder="0" style="width: 100%;" :style="{ minHeight: iframeHeight, height: iframeHeight }"></iframe>
+    </q-drawer>
 
 
-    <div class="phone-opener" v-show="!rightDrawerOpen">
-      <q-btn round color="red" icon="phone"></q-btn>
-      <q-btn round flat color="white" icon="keyboard_double_arrow_left" @click="toggleRightDrawer"></q-btn>
-    </div>
+    <q-page-container>
+      <q-page :style-fn="qPageStyleFunction">
+        <iframe src="<?php echo BASE_URL ?>layout/tabs.php" frameborder="0" style="width: 100%;" :style="{ minHeight: iframeHeight, height: iframeHeight }"></iframe>
+      </q-page>
+    </q-page-container>
 
+  </q-layout>
+
+
+  <div class="phone-opener" v-show="!rightDrawerOpen">
+    <q-btn round color="red" icon="phone"></q-btn>
+    <q-btn round flat color="white" icon="keyboard_double_arrow_left" @click="toggleRightDrawer"></q-btn>
   </div>
 
-  <?php include 'layout/scripts.php'; ?>
+</div>
 
-  <script>
-    const {
-      createApp,
-      ref,
-      computed
-    } = Vue;
 
-    const app = createApp({
-      setup() {
-        const {
-          leftDrawerOpen,
-          rightDrawerOpen,
-          qPageMinHeight,
-          toggleLeftDrawer,
-          toggleRightDrawer,
-          toggleDarkMode
-        } = useMobxStore(
-          window.globalStore.appStore,
-          ['leftDrawerOpen', 'rightDrawerOpen', 'qPageMinHeight', 'toggleLeftDrawer', 'toggleRightDrawer', 'toggleDarkMode']
-        );
+<?php require_once __DIR__ . '/layout/scripts.php'; ?>
 
-        const {
-          addTab: addTabToStore
-        } = useMobxStore(
-          window.globalStore.tabsStore,
-          ['addTab']
-        );
 
-        // Computed property for iframe height
-        const iframeHeight = computed(() => `${qPageMinHeight.value - 6}px`);
+<script>
+  const {
+    createApp,
+    ref,
+    computed
+  } = Vue;
 
-        const addTab = (menuItem) => {
-          const tabInfo = {
-            name: menuItem.text,
-            icon: menuItem.icon,
-            label: menuItem.text,
-            url: menuItem.url
-          };
-          addTabToStore(tabInfo);
+  const app = createApp({
+    setup() {
+      const {
+        leftDrawerOpen,
+        rightDrawerOpen,
+        qPageMinHeight,
+        toggleLeftDrawer,
+        toggleRightDrawer,
+        toggleDarkMode
+      } = useMobxStore(
+        window.globalStore.appStore,
+        ['leftDrawerOpen', 'rightDrawerOpen', 'qPageMinHeight', 'toggleLeftDrawer', 'toggleRightDrawer', 'toggleDarkMode']
+      );
+
+      const {
+        addTab: addTabToStore
+      } = useMobxStore(
+        window.globalStore.tabsStore,
+        ['addTab']
+      );
+
+      // Computed property for iframe height
+      const iframeHeight = computed(() => `${qPageMinHeight.value - 6}px`);
+
+      const addTab = (menuItem) => {
+        const tabInfo = {
+          name: menuItem.text,
+          icon: menuItem.icon,
+          label: menuItem.text,
+          url: menuItem.url
         };
+        addTabToStore(tabInfo);
+      };
 
-        const qPageStyleFunction = (offset, height) => {
-          window.globalStore.appStore.qPageMinHeight = (height - offset);
-          return {
-            minHeight: (height - offset) + 'px'
-          }
-        };
-
-        const mainMenu = <?php echo json_encode(include 'config/menu.php'); ?>;
-
+      const qPageStyleFunction = (offset, height) => {
+        window.globalStore.appStore.qPageMinHeight = (height - offset);
         return {
-          leftDrawerOpen,
-          toggleLeftDrawer,
-          rightDrawerOpen,
-          toggleRightDrawer,
-          toggleDarkMode,
-          mainMenu,
-          addTab,
-          qPageStyleFunction,
-          iframeHeight,
-        };
-      }
-    });
+          minHeight: (height - offset) + 'px'
+        }
+      };
 
-    
-    app.use(Quasar).use(DarkModeSync);
-    app.mount("#q-app");
-  </script>
+      const mainMenu = <?php echo json_encode(include 'config/menu.php'); ?>;
 
-</body>
+      return {
+        leftDrawerOpen,
+        toggleLeftDrawer,
+        rightDrawerOpen,
+        toggleRightDrawer,
+        toggleDarkMode,
+        mainMenu,
+        addTab,
+        qPageStyleFunction,
+        iframeHeight,
+      };
+    }
+  });
 
-</html>
+
+  app.use(Quasar).use(DarkModeSync);
+  app.mount("#q-app");
+</script>
+
+<?php require_once __DIR__ . '/layout/footer.php'; ?>

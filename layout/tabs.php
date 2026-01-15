@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php include '../layout/head.php'; ?>
+<?php require_once '../layout/head.php'; ?>
 
 <body>
     <div id="q-app">
@@ -46,7 +46,7 @@
 
     </div>
 
-    <?php include '../layout/scripts.php'; ?>
+    <?php require_once '../layout/scripts.php'; ?>
 
     <script>
         const {

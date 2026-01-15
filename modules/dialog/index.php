@@ -1,52 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php require_once '../../layout/head.php'; ?>
 
-<?php include '../../layout/head.php'; ?>
-
-<body>
-    <div id="q-app">
-        <div class="q-pa-md">
-            <div class="q-gutter-md">
-                <q-btn label="Confirm" color="primary" @click="confirm"></q-btn>
-            </div>
+<div id="q-app">
+    <div class="q-pa-md">
+        <div class="q-gutter-md">
+            <q-btn label="Confirm" color="primary" @click="confirm"></q-btn>
         </div>
     </div>
-    <?php include '../../layout/scripts.php'; ?>
+</div>
 
-    <script>
-        const {
-            createApp,
-            ref
-        } = Vue;
+<?php require_once '../../layout/scripts.php'; ?>
 
-        const app = createApp({
-            setup() {
-                const confirm = () => {
-                    parentQuasar.Dialog.create({
-                        title: 'Confirm',
-                        message: 'Would you like to turn on the wifi?',
-                        cancel: true,
-                        persistent: false,
-                    }).onOk(() => {
-                        console.log('>>>> OK')
-                    }).onOk(() => {
-                        console.log('>>>> second OK catcher')
-                    }).onCancel(() => {
-                        console.log('>>>> Cancel')
-                    }).onDismiss(() => {
-                        console.log('I am triggered on both OK and Cancel')
-                    })
-                };
+<script>
+    const {
+        createApp,
+        ref
+    } = Vue;
 
-                return {
-                    confirm
-                };
-            },
-        });
+    const app = createApp({
+        setup() {
+            const confirm = () => {
+                parentQuasar.Dialog.create({
+                    title: 'Confirm',
+                    message: 'Would you like to turn on the wifi?',
+                    cancel: true,
+                    persistent: false,
+                }).onOk(() => {
+                    console.log('>>>> OK')
+                }).onOk(() => {
+                    console.log('>>>> second OK catcher')
+                }).onCancel(() => {
+                    console.log('>>>> Cancel')
+                }).onDismiss(() => {
+                    console.log('I am triggered on both OK and Cancel')
+                })
+            };
 
-        app.use(Quasar).use(DarkModeSync);
-        app.mount("#q-app");
-    </script>
-</body>
+            return {
+                confirm
+            };
+        },
+    });
 
-</html>
+    app.use(Quasar).use(DarkModeSync);
+    app.mount("#q-app");
+</script>
+
+<?php require_once '../../layout/footer.php'; ?>

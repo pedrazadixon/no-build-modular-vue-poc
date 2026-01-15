@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <?php require_once __DIR__ . '/../config/constants.php'; ?>
 
 <head>
@@ -8,3 +11,5 @@
     <link href="https://cdn.jsdelivr.net/npm/quasar@2.18.6/dist/quasar.prod.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo BASE_URL ?>assets/css/styles.css" rel="stylesheet" type="text/css" />
 </head>
+
+<body>
