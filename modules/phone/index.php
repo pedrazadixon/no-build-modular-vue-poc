@@ -59,8 +59,6 @@
 
         const app = createApp({
             setup() {
-                initializeApp();
-
                 const {
                     rightDrawerOpen,
                     toggleRightDrawer
@@ -77,7 +75,7 @@
             },
         });
 
-        app.use(Quasar);
+        app.use(Quasar).use(DarkModeSync);
         app.mount("#q-app");
     </script>
 </body>

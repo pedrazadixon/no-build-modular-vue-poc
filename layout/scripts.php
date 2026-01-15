@@ -13,4 +13,4 @@
 
 <!-- helpers -->
 <script src="<?php echo BASE_URL; ?>assets/js/useMobxStore.js?<?php echo time(); ?>"></script>
-<script src="<?php echo BASE_URL; ?>assets/js/initialize.js?<?php echo time(); ?>"></script>
+<script src="<?php echo BASE_URL; ?>assets/js/DarkModeSync.js?<?php echo time(); ?>"></script>

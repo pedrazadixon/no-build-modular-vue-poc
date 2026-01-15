@@ -116,8 +116,6 @@
         const app = createApp({
 
             setup() {
-                initializeApp();
-
                 const name = ref(null)
                 const email = ref(null)
                 const age = ref(null)
@@ -213,7 +211,7 @@
             }
         });
 
-        app.use(Quasar);
+        app.use(Quasar).use(DarkModeSync);
         app.mount("#q-app");
     </script>
 </body>

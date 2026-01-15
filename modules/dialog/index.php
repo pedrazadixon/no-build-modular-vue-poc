@@ -21,8 +21,6 @@
 
         const app = createApp({
             setup() {
-                initializeApp();
-
                 const confirm = () => {
                     parentQuasar.Dialog.create({
                         title: 'Confirm',
@@ -46,7 +44,7 @@
             },
         });
 
-        app.use(Quasar);
+        app.use(Quasar).use(DarkModeSync);
         app.mount("#q-app");
     </script>
 </body>

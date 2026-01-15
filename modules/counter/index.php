@@ -22,8 +22,6 @@
 
     const app = createApp({
       setup() {
-        initializeApp();
-
         const { count: counter, increment, decrement } = useMobxStore(
           window.globalStore.counterStore,
           ['count', 'increment', 'decrement']
@@ -37,7 +35,7 @@
       },
     });
 
-    app.use(Quasar);
+    app.use(Quasar).use(DarkModeSync);
     app.mount("#q-app");
   </script>
 </body>
