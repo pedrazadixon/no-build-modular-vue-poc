@@ -1,6 +1,6 @@
 class AppStore {
   leftDrawerOpen = true;
-  rightDrawerOpen = true;
+  rightDrawerOpen = false;
   qPageMinHeight = 100;
   darkMode = false;
 

@@ -46,33 +46,6 @@
 </div>
 
 <?php require_once '../../layout/scripts.php'; ?>
-
-<script>
-    const {
-        createApp,
-        ref
-    } = Vue;
-
-    const app = createApp({
-        setup() {
-            const {
-                rightDrawerOpen,
-                toggleRightDrawer
-            } = useMobxStore(
-                window.globalStore.appStore,
-                ['rightDrawerOpen', 'toggleRightDrawer']
-            );
-
-            const phoneNumber = ref('');
-            return {
-                phoneNumber,
-                toggleRightDrawer,
-            };
-        },
-    });
-
-    app.use(Quasar).use(DarkModeSync);
-    app.mount("#q-app");
-</script>
+<script src="<?php echo BASE_URL; ?>modules/phone/phone.js?<?php echo time(); ?>"></script>
 
 <?php require_once '../../layout/footer.php'; ?>

@@ -4,7 +4,7 @@
 
   <q-layout view="hHh lpR fFf">
 
-    <q-header reveal elevated class="bg-primary text-white">
+    <q-header reveal class="bg-primary text-white" style="border-bottom: 1px solid rgba(255, 255, 255, 0.15);">
       <q-toolbar>
         <q-btn dense flat round icon="menu" @click="toggleLeftDrawer"></q-btn>
 
@@ -22,7 +22,7 @@
     <q-drawer v-model="leftDrawerOpen" side="left" bordered>
 
       <q-scroll-area class="fit">
-        <q-list padding>
+        <q-list>
 
           <template v-for="menuItem in mainMenu" :key="menuItem.text">
 
