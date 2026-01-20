@@ -46,6 +46,6 @@
 </div>
 
 <?php require_once '../../layout/scripts.php'; ?>
-<script src="<?php echo BASE_URL; ?>modules/phone/phone.js?<?php echo time(); ?>"></script>
+<script src="<?php echo BASE_URL; ?>modules/phone/phone.js?v=<?php echo APP_VERSION; ?>"></script>
 
 <?php require_once '../../layout/footer.php'; ?>

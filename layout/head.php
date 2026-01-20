@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php // require_once __DIR__ . '/../config/constants.php'; ?>
-
 <?php
+
+$assets_version = '1.0.0';
+
 require_once __DIR__ . '/../vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
 $dotenv->load();
@@ -12,6 +13,9 @@ if (!defined('BASE_URL')) {
     define('BASE_URL', rtrim($_ENV['BASE_URL'], '/') . '/');
 }
 
+if (!defined('APP_VERSION')) {
+    define('APP_VERSION', $assets_version);
+}
 ?>
 
 <head>

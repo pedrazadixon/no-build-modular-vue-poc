@@ -9,6 +9,6 @@
 </div>
 
 <?php require_once '../../layout/scripts.php'; ?>
-<script src="<?php echo BASE_URL; ?>modules/_blank/_blank.js?<?php echo time(); ?>"></script>
+<script src="<?php echo BASE_URL; ?>modules/_blank/_blank.js?v=<?php echo APP_VERSION; ?>"></script>
 
 <?php require_once '../../layout/footer.php'; ?>
