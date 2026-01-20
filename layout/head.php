@@ -1,7 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php require_once __DIR__ . '/../config/constants.php'; ?>
+<?php // require_once __DIR__ . '/../config/constants.php'; ?>
+
+<?php
+require_once __DIR__ . '/../vendor/autoload.php';
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
+$dotenv->load();
+
+if (!defined('BASE_URL')) {
+    define('BASE_URL', rtrim($_ENV['BASE_URL'], '/') . '/');
+}
+
+?>
 
 <head>
     <meta charset="UTF-8" />
