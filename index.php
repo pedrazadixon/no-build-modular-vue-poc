@@ -15,7 +15,6 @@
           App
         </q-toolbar-title>
         <q-btn dense flat round icon="brightness_4" @click="toggleDarkMode"></q-btn>
-        <q-btn dense flat round icon="menu" @click="toggleRightDrawer"></q-btn>
       </q-toolbar>
     </q-header>
 

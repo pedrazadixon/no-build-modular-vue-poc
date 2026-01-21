@@ -5,50 +5,60 @@
     <div class="q-pa-md">
 
         <q-form
-            @submit="onSubmit"
-            class="q-gutter-md">
+            @submit="onSubmit">
 
-            <q-input
-                filled
-                v-model="name"
-                label="Your name *"
-                hint="Name and surname">
-            </q-input>
+            <div class="row q-col-gutter-md">
 
-            <q-input
-                filled
-                v-model="email"
-                label="Email *"
-                type="email">
-            </q-input>
+                <div class="col-6">
+                    <q-input
+                        filled
+                        v-model="name"
+                        label="Your name *"
+                        hint="Name and surname">
+                    </q-input>
+                </div>
+                <div class="col-6">
+                    <q-input
+                        filled
+                        v-model="email"
+                        label="Email *"
+                        type="email">
+                    </q-input>
+                </div>
+                <div class="col-6">
+                    <q-input
+                        filled
+                        type="number"
+                        v-model="age"
+                        label="Your age *">
+                    </q-input>
+                </div>
+                <div class="col-6">
+                    <q-input
+                        filled
+                        v-model="phone"
+                        label="Phone number"
+                        mask="(###) ### - ####">
+                    </q-input>
+                </div>
+                <div class="col-6">
+                    <q-input
+                        filled
+                        v-model="address"
+                        label="Address">
+                    </q-input>
+                </div>
+                <div class="col-6">
+                    <q-input
+                        filled
+                        v-model="bio"
+                        label="Bio"
+                        type="textarea"
+                        rows="6">
+                    </q-input>
+                </div>
 
-            <q-input
-                filled
-                type="number"
-                v-model="age"
-                label="Your age *">
-            </q-input>
-
-            <q-input
-                filled
-                v-model="phone"
-                label="Phone number"
-                mask="(###) ### - ####">
-            </q-input>
-
-            <q-input
-                filled
-                v-model="address"
-                label="Address">
-            </q-input>
-
-            <q-input
-                filled
-                v-model="bio"
-                label="Bio"
-                type="textarea"
-                rows="6">
-            </q-input>
+            </div>
 
             <q-slider
                 v-model="experienceYears"
@@ -85,12 +95,6 @@
                 label="Preferred contact method"
                 color="primary">
             </q-option-group>
-
-            <q-btn-toggle
-                v-model="theme"
-                :options="themeOptions"
-                color="primary">
-            </q-btn-toggle>
 
             <div>
                 <q-btn label="Submit" type="submit" color="primary"></q-btn>
