@@ -9,34 +9,6 @@
 </div>
 
 <?php require_once '../../layout/scripts.php'; ?>
-
-<script>
-  const {
-    createApp,
-    ref
-  } = Vue;
-
-  const app = createApp({
-    setup() {
-      const {
-        count: counter,
-        increment,
-        decrement
-      } = useMobxStore(
-        window.globalStore.counterStore,
-        ['count', 'increment', 'decrement']
-      );
-
-      return {
-        counter,
-        increment,
-        decrement,
-      };
-    },
-  });
-
-  app.use(Quasar).use(DarkModeSync);
-  app.mount("#q-app");
-</script>
+<script src="<?php echo BASE_URL; ?>modules/counter/counter.js?v=<?php echo APP_VERSION; ?>"></script>
 
 <?php require_once '../../layout/footer.php'; ?>
