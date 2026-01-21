@@ -12,6 +12,11 @@ return [
         'url' => BASE_URL . 'modules/agendas/index.php',
     ],
     [
+        'icon' => 'monitor_heart',
+        'text' => 'Monitor',
+        'url' => BASE_URL . 'modules/monitor/index.php',
+    ],
+    [
         'icon' => 'countertops',
         'text' => 'Counter',
         'url' => BASE_URL . 'modules/counter/index.php',
