@@ -5,7 +5,7 @@
         <!-- Header -->
         <div class="q-mb-md">
             <h5 class="q-my-sm text-h5">Monitor de Agentes en Tiempo Real</h5>
-            <p class="text-grey-7">Monitoreo en vivo del estado de agentes por campaña</p>
+            <p :class="$q.dark.isActive ? 'text-grey-5' : 'text-grey-7'">Monitoreo en vivo del estado de agentes por campaña</p>
         </div>
 
         <!-- Barra de Control Superior -->
@@ -55,34 +55,34 @@
         <!-- Resumen de Estados -->
         <div class="row q-col-gutter-md q-mb-md">
             <div class="col-12 col-sm-6 col-md-3">
-                <q-card class="bg-green-1">
+                <q-card :class="$q.dark.isActive ? 'bg-green-9' : 'bg-green-1'">
                     <q-card-section>
-                        <div class="text-h6 text-green-8">{{ totalIdle }}</div>
-                        <div class="text-caption text-grey-7">Disponibles</div>
+                        <div class="text-h6" :class="$q.dark.isActive ? 'text-green-3' : 'text-green-8'">{{ totalIdle }}</div>
+                        <div class="text-caption" :class="$q.dark.isActive ? 'text-grey-5' : 'text-grey-7'">Disponibles</div>
                     </q-card-section>
                 </q-card>
             </div>
             <div class="col-12 col-sm-6 col-md-3">
-                <q-card class="bg-red-1">
+                <q-card :class="$q.dark.isActive ? 'bg-red-9' : 'bg-red-1'">
                     <q-card-section>
-                        <div class="text-h6 text-red-8">{{ totalTalking }}</div>
-                        <div class="text-caption text-grey-7">En Llamada</div>
+                        <div class="text-h6" :class="$q.dark.isActive ? 'text-red-3' : 'text-red-8'">{{ totalTalking }}</div>
+                        <div class="text-caption" :class="$q.dark.isActive ? 'text-grey-5' : 'text-grey-7'">En Llamada</div>
                     </q-card-section>
                 </q-card>
             </div>
             <div class="col-12 col-sm-6 col-md-3">
-                <q-card class="bg-orange-1">
+                <q-card :class="$q.dark.isActive ? 'bg-orange-9' : 'bg-orange-1'">
                     <q-card-section>
-                        <div class="text-h6 text-orange-8">{{ totalACW }}</div>
-                        <div class="text-caption text-grey-7">ACW</div>
+                        <div class="text-h6" :class="$q.dark.isActive ? 'text-orange-3' : 'text-orange-8'">{{ totalACW }}</div>
+                        <div class="text-caption" :class="$q.dark.isActive ? 'text-grey-5' : 'text-grey-7'">ACW</div>
                     </q-card-section>
                 </q-card>
             </div>
             <div class="col-12 col-sm-6 col-md-3">
-                <q-card class="bg-blue-1">
+                <q-card :class="$q.dark.isActive ? 'bg-blue-9' : 'bg-blue-1'">
                     <q-card-section>
-                        <div class="text-h6 text-blue-8">{{ totalAgents }}</div>
-                        <div class="text-caption text-grey-7">Total Agentes</div>
+                        <div class="text-h6" :class="$q.dark.isActive ? 'text-blue-3' : 'text-blue-8'">{{ totalAgents }}</div>
+                        <div class="text-caption" :class="$q.dark.isActive ? 'text-grey-5' : 'text-grey-7'">Total Agentes</div>
                     </q-card-section>
                 </q-card>
             </div>
@@ -92,8 +92,8 @@
         <q-card v-for="(queue, index) in filteredQueues" :key="index" class="q-mb-md">
             <q-expansion-item
                 default-opened
-                header-class="bg-grey-2 q-py-sm"
-                expand-icon-class="text-grey-7">
+                :header-class="$q.dark.isActive ? 'bg-grey-9 q-py-sm' : 'bg-grey-2 q-py-sm'"
+                :expand-icon-class="$q.dark.isActive ? 'text-grey-5' : 'text-grey-7'">
                 <!-- Header de la campaña -->
                 <template v-slot:header>
                     <div class="row items-center full-width">
@@ -107,7 +107,7 @@
                                 <q-icon name="phone_in_talk" class="q-mr-xs"></q-icon>
                                 {{ queue.name }}
                             </div>
-                            <div class="text-caption text-grey-6">{{ queue.description }}</div>
+                            <div class="text-caption" :class="$q.dark.isActive ? 'text-grey-5' : 'text-grey-6'">{{ queue.description }}</div>
                         </div>
                         <div class="col-auto">
                             <q-badge color="green" class="q-mr-xs">{{ queue.idleCount }} Disp.</q-badge>
@@ -130,12 +130,12 @@
                     <template v-slot:body-cell-name="props">
                         <q-td :props="props">
                             <div class="row items-center no-wrap">
-                                <q-avatar size="28px" color="grey-4" text-color="white" class="q-mr-sm">
+                                <q-avatar size="28px" :color="$q.dark.isActive ? 'grey-8' : 'grey-4'" text-color="white" class="q-mr-sm">
                                     <q-icon name="person"></q-icon>
                                 </q-avatar>
                                 <div>
                                     <div class="text-weight-medium">{{ props.row.name }}</div>
-                                    <div class="text-caption text-grey-6 font-mono">ID: {{ props.row.id }}</div>
+                                    <div class="text-caption font-mono" :class="$q.dark.isActive ? 'text-grey-5' : 'text-grey-6'">ID: {{ props.row.id }}</div>
                                 </div>
                             </div>
                         </q-td>
@@ -195,9 +195,9 @@
 
         <!-- Sin resultados -->
         <q-card v-if="filteredQueues.length === 0" class="q-pa-lg text-center">
-            <q-icon name="inbox" size="64px" color="grey-5"></q-icon>
-            <div class="text-h6 text-grey-6 q-mt-md">No se encontraron resultados</div>
-            <div class="text-grey-5">Intenta ajustar los filtros de búsqueda</div>
+            <q-icon name="inbox" size="64px" :color="$q.dark.isActive ? 'grey-7' : 'grey-5'"></q-icon>
+            <div class="text-h6 q-mt-md" :class="$q.dark.isActive ? 'text-grey-5' : 'text-grey-6'">No se encontraron resultados</div>
+            <div :class="$q.dark.isActive ? 'text-grey-6' : 'text-grey-5'">Intenta ajustar los filtros de búsqueda</div>
         </q-card>
     </div>
 </div>
