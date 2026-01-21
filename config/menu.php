@@ -7,6 +7,11 @@ return [
         'url' => 'https://placehold.co/400?text=Hello',
     ],
     [
+        'icon' => 'calendar_month',
+        'text' => 'Agendas',
+        'url' => BASE_URL . 'modules/agendas/index.php',
+    ],
+    [
         'icon' => 'countertops',
         'text' => 'Counter',
         'url' => BASE_URL . 'modules/counter/index.php',
