@@ -15,6 +15,27 @@
           App
         </q-toolbar-title>
         <q-btn dense flat round icon="brightness_4" @click="toggleDarkMode"></q-btn>
+        <q-btn flat>
+          <span class="q-mr-sm">Carlos Torres</span>
+          <q-avatar size="26px">
+            <img src="https://cdn.quasar.dev/img/boy-avatar.png">
+          </q-avatar>
+          <!-- <q-tooltip>Account</q-tooltip> -->
+          <q-menu auto-close>
+            <q-list style="min-width: 150px">
+              <q-item clickable v-close-popup>
+                <q-item-section>Profile</q-item-section>
+              </q-item>
+              <q-item clickable v-close-popup>
+                <q-item-section>Settings</q-item-section>
+              </q-item>
+              <q-separator></q-separator>
+              <q-item clickable v-close-popup>
+                <q-item-section>Logout</q-item-section>
+              </q-item>
+            </q-list>
+          </q-menu>
+        </q-btn>
       </q-toolbar>
     </q-header>
 
