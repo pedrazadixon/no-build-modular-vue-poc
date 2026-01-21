@@ -202,12 +202,6 @@
     </div>
 </div>
 
-<style>
-    .font-mono {
-        font-family: 'JetBrains Mono', 'Consolas', 'Monaco', 'Courier New', monospace;
-    }
-</style>
-
 <?php require_once '../../layout/scripts.php'; ?>
 <script src="<?php echo BASE_URL; ?>modules/monitor/monitor.js?v=<?php echo APP_VERSION; ?>"></script>
 
